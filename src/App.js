@@ -8,6 +8,10 @@ class App extends React.Component {
         name: "John",
         address: "Hai Ba Trung",
     };
+
+    onHover(){
+      console.log("Hovered!");
+    }
     render() {
         return (
             <div>
@@ -19,6 +23,7 @@ class App extends React.Component {
                         <p>{this.state.address}</p>
                     </div>
                 }
+                <button onMouseMove={this.onHover}>Change Name</button>
             </div>
         );
     }
