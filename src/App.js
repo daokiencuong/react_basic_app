@@ -20,6 +20,18 @@ class App extends React.Component {
         });
     }
 
+    handleOnChange(event) {
+        //console.log(event);
+        this.setState({
+            name: event.target.value,
+        });
+    }
+
+    handleOnSubmit(event) {
+        event.preventDefault();
+        console.log("test", event.target[0].value);
+    }
+
     render() {
         return (
             <div>
@@ -33,6 +45,15 @@ class App extends React.Component {
                 }
                 <button onClick={(event) => {this.changeName(event)}}>Change Name</button>
                 <button onClick={(event) => {this.onHover(event)}}>Console Name</button>
+
+                <form onSubmit={(event) => {this.handleOnSubmit(event)}}>    
+                    <label>
+                        Name:
+                        <input type="text" name="name" 
+                        onChange={(event) => {this.handleOnChange(event)}}/>
+                    </label>
+                    <input type="submit" value="Submit" />
+                </form>
             </div>
         );
     }
