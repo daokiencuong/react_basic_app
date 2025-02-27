@@ -1,13 +1,75 @@
-import React from'react';
+import React from "react";
+import UserInfo from "./UserInfo";
 
 class MyComponent extends React.Component {
-    //JSX
+    state = {
+        name: "John",
+        address: "Hai Ba Trung",
+    };
+
+    onHover(event) {
+        console.log("Hovered!", this.state.name);
+    }
+
+    changeName(event) {
+        this.setState({
+            name: "Doe",
+            address: "123 Main St",
+        });
+    }
+
+    handleOnChange(event) {
+        //console.log(event);
+        this.setState({
+            name: event.target.value,
+        });
+    }
+
+    handleOnSubmit(event) {
+        event.preventDefault();
+        console.log("test", event.target[0].value);
+    }
+
     render() {
         return (
             <div>
-                <h1>MyComponent</h1>
-                <p>My first class component</p>
-                { Math.random() > 0.5? <p>Random number is greater than 0.5</p> : <p>Random number is less than or equal to 0.5 </p> }
+                <br />
+                <UserInfo name="Dao Kien Cuong" age={31} />
+                <hr />
+                <UserInfo name={this.state.name} age={31} />
+                <br />
+                <button
+                    onClick={(event) => {
+                        this.changeName(event);
+                    }}
+                >
+                    Change Name
+                </button>
+                <button
+                    onClick={(event) => {
+                        this.onHover(event);
+                    }}
+                >
+                    Console Name
+                </button>
+
+                <form
+                    onSubmit={(event) => {
+                        this.handleOnSubmit(event);
+                    }}
+                >
+                    <label>
+                        Name:
+                        <input
+                            type="text"
+                            name="name"
+                            onChange={(event) => {
+                                this.handleOnChange(event);
+                            }}
+                        />
+                    </label>
+                    <input type="submit" value="Submit" />
+                </form>
             </div>
         );
     }
