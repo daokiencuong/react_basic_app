@@ -1,14 +1,19 @@
 import React from "react";
 
 class UserInfo extends React.Component {
-    render(){
-        const { name, age } = this.props;
+    render() {
+        const { listUsers } = this.props;
         return (
             <div>
                 <h2>User Info</h2>
-                <p>Name: {name}</p>
-                <p>Age: {age}</p>
-                
+                {listUsers.map((user) => {
+                    return (
+                        <div key={user.id}>
+                            <p>Name: {user.name}</p>
+                            <p>Age: {user.age}</p>
+                        </div>
+                    );
+                })}
             </div>
         );
     }
