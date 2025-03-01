@@ -1,4 +1,5 @@
 import React from "react";
+import "./UserInfo.scss";
 
 class UserInfo extends React.Component {
     state = {
