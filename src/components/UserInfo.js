@@ -31,6 +31,7 @@ class UserInfo extends React.Component {
                                 >
                                     <p>Name: {user.name}</p>
                                     <p>Age: {user.age}</p>
+                                    <hr />
                                 </div>
                             );
                         })}
