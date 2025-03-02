@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./UserInfo.scss";
 import logo from "../logo.svg";
 
@@ -40,9 +40,27 @@ import logo from "../logo.svg";
 const UserInfo = (props) => {
     const { listUsers } = props;
     // console.table(listUsers);
+
+    const [isShowHideListUser, setIsShowHideListUser] = useState(true);
+
+    const handleShowHideListUser = () => {
+        setIsShowHideListUser(!isShowHideListUser);
+    };
+
     return (
-        <>
-            {true && (
+        <div className="display-info-container">
+            <div>
+                <span
+                    onClick={() => {
+                        handleShowHideListUser();
+                    }}
+                >
+                    {isShowHideListUser !== true
+                        ? "Show list user"
+                        : "Hide List user"}
+                </span>
+            </div>
+            {isShowHideListUser && (
                 <div>
                     <h2>User Info</h2>
                     {listUsers.map((user) => {
@@ -57,9 +75,7 @@ const UserInfo = (props) => {
                                     <button
                                         onClick={(event) => {
                                             event.preventDefault();
-                                            props.handleDeleteUser(
-                                                user.id
-                                            );
+                                            props.handleDeleteUser(user.id);
                                         }}
                                     >
                                         Delete
@@ -71,7 +87,7 @@ const UserInfo = (props) => {
                     })}
                 </div>
             )}
-        </>
+        </div>
     );
 };
 
