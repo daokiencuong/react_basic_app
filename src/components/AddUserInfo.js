@@ -13,7 +13,7 @@ class AddUserInfo extends React.Component {
     render() {
         
         return (
-            <div>
+            <>
                 <h2>Add User Info</h2>
                 <form onSubmit={(event)=>{this.handleOnSubmit(event)}}>
                     <input
@@ -33,7 +33,7 @@ class AddUserInfo extends React.Component {
                     <br />
                     <button type="submit">Add User</button>
                 </form>
-            </div>
+            </>
         );
     }
 }

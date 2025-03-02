@@ -16,8 +16,7 @@ class UserInfo extends React.Component {
         const { listUsers } = this.props;
         // console.table(listUsers);
         return (
-            <div>
-                <img src={logo} alt="" />
+            <>
                 <div>
                     <span onClick={this.handleShowHideListUser} htmlFor="hide">
                         Hide list user:{" "}
@@ -34,13 +33,19 @@ class UserInfo extends React.Component {
                                 >
                                     <p>Name: {user.name}</p>
                                     <p>Age: {user.age}</p>
+                                    <div>
+                                        <button onClick={(event) =>{
+                                            event.preventDefault();
+                                            this.props.handleDeleteUser(user.id);
+                                        }}>Delete</button>
+                                    </div>
                                     <hr />
                                 </div>
                             );
                         })}
                     </div>
                 )}
-            </div>
+            </>
         );
     }
 }
