@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./UserInfo.scss";
 import logo from "../logo.svg";
 
@@ -46,6 +46,8 @@ const UserInfo = (props) => {
     const handleShowHideListUser = () => {
         setIsShowHideListUser(!isShowHideListUser);
     };
+
+    useEffect(()=>{}, []);
 
     return (
         <div className="display-info-container">
