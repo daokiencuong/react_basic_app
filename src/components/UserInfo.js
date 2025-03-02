@@ -2,52 +2,77 @@ import React from "react";
 import "./UserInfo.scss";
 import logo from "../logo.svg";
 
-class UserInfo extends React.Component {
-    state = {
-        isShowListUser: true,
-    };
+//Stateless and Stateful Components
+// class UserInfo extends React.Component {
+//     render() {
+//         const { listUsers } = this.props;
+//         // console.table(listUsers);
+//         return (
+//             <>
+//                 {true && (
+//                     <div>
+//                         <h2>User Info</h2>
+//                         {listUsers.map((user) => {
+//                             return (
+//                                 <div
+//                                     key={user.id}
+//                                     className={user.age < 18 ? "red" : "green"}
+//                                 >
+//                                     <p>Name: {user.name}</p>
+//                                     <p>Age: {user.age}</p>
+//                                     <div>
+//                                         <button onClick={(event) =>{
+//                                             event.preventDefault();
+//                                             this.props.handleDeleteUser(user.id);
+//                                         }}>Delete</button>
+//                                     </div>
+//                                     <hr />
+//                                 </div>
+//                             );
+//                         })}
+//                     </div>
+//                 )}
+//             </>
+//         );
+//     }
+// }
 
-    handleShowHideListUser = () => {
-        this.setState({
-            isShowListUser: !this.state.isShowListUser,
-        });
-    };
-    render() {
-        const { listUsers } = this.props;
-        // console.table(listUsers);
-        return (
-            <>
+const UserInfo = (props) => {
+    const { listUsers } = props;
+    // console.table(listUsers);
+    return (
+        <>
+            {true && (
                 <div>
-                    <span onClick={this.handleShowHideListUser} htmlFor="hide">
-                        Hide list user:{" "}
-                    </span>
-                </div>
-                {this.state.isShowListUser && (
-                    <div>
-                        <h2>User Info</h2>
-                        {listUsers.map((user) => {
-                            return (
-                                <div
-                                    key={user.id}
-                                    className={user.age < 18 ? "red" : "green"}
-                                >
-                                    <p>Name: {user.name}</p>
-                                    <p>Age: {user.age}</p>
-                                    <div>
-                                        <button onClick={(event) =>{
+                    <h2>User Info</h2>
+                    {listUsers.map((user) => {
+                        return (
+                            <div
+                                key={user.id}
+                                className={user.age < 18 ? "red" : "green"}
+                            >
+                                <p>Name: {user.name}</p>
+                                <p>Age: {user.age}</p>
+                                <div>
+                                    <button
+                                        onClick={(event) => {
                                             event.preventDefault();
-                                            this.props.handleDeleteUser(user.id);
-                                        }}>Delete</button>
-                                    </div>
-                                    <hr />
+                                            props.handleDeleteUser(
+                                                user.id
+                                            );
+                                        }}
+                                    >
+                                        Delete
+                                    </button>
                                 </div>
-                            );
-                        })}
-                    </div>
-                )}
-            </>
-        );
-    }
-}
+                                <hr />
+                            </div>
+                        );
+                    })}
+                </div>
+            )}
+        </>
+    );
+};
 
 export default UserInfo;

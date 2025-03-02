@@ -27,7 +27,6 @@ class AddUserInfo extends React.Component {
                         type="number"
                         placeholder="Age"
                         name="age"
-                        value={Math.floor((Math.random()*100)+1)}
                         required
                     />
                     <br />
