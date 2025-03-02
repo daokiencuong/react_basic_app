@@ -1,5 +1,6 @@
 import React from "react";
 import "./UserInfo.scss";
+import logo from "../logo.svg";
 
 class UserInfo extends React.Component {
     state = {
@@ -16,6 +17,7 @@ class UserInfo extends React.Component {
         // console.table(listUsers);
         return (
             <div>
+                <img src={logo} alt="" />
                 <div>
                     <span onClick={this.handleShowHideListUser} htmlFor="hide">
                         Hide list user:{" "}
