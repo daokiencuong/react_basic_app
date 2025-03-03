@@ -1,16 +1,11 @@
-import logo from "./logo.svg";
 import "./App.scss";
-import MyComponent from "./components/MyComponent";
-import React from "react";
 
-class App extends React.Component {
-    render() {
-        return (
-            <div>
-                <MyComponent></MyComponent>
-            </div>
-        );
-    }
+const App = () => {
+    return (
+        <div className="App-container">
+            Hello World
+        </div>
+    );
 }
 
 export default App;
