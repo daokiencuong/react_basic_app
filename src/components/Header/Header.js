@@ -6,7 +6,7 @@ import { NavLink } from "react-router-dom";
 
 const Header = () => {
     return (
-        <Navbar expand="lg" className="bg-body-tertiary">
+        <Navbar expand="lg" className="bg-body-tertiary container">
             <Container>
                 <NavLink to='/' className='navbar-brand'>Quiz System</NavLink>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -17,7 +17,9 @@ const Header = () => {
                         <NavLink to="/admins" className='nav-link'>Admin</NavLink>
                     </Nav>
                     <Nav>
-                        <NavDropdown title="Setting" id="basic-nav-dropdown">
+                        <button className="btn-login">Log In</button>
+                        <button className="btn-signup">Sign Up</button>
+                        {/* <NavDropdown title="Setting" id="basic-nav-dropdown">
                             <NavDropdown.Item >
                                 User Info
                             </NavDropdown.Item>
@@ -28,7 +30,7 @@ const Header = () => {
                             <NavDropdown.Item >
                                 Log out
                             </NavDropdown.Item>
-                        </NavDropdown>
+                        </NavDropdown> */}
                     </Nav>
                 </Navbar.Collapse>
             </Container>
