@@ -1,6 +1,8 @@
+import axios from "axios";
 import { useState, setShow } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import { toast } from "react-toastify";
 
 import { FcPlus } from "react-icons/fc";
 
@@ -8,7 +10,15 @@ const ModalCreateUser = (props) => {
     
     const {show, setShow} = props;
 
-    const handleClose = () => setShow(false);
+    const handleClose = () => {
+        setShow(false);
+        setEmail("");
+        setPassword("");
+        setUsername("");
+        setRole("USER");
+        setImg("");
+        setPreviewImage("");
+    };
     
 
     const [email, setEmail] = useState("");
@@ -27,6 +37,46 @@ const ModalCreateUser = (props) => {
         }
         
     };
+
+    const validateEmail = (email) => {
+        return String(email)
+          .toLowerCase()
+          .match(
+            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+          );
+    };
+
+    const handleSubmitCreateUser = async (event) => {
+        //Validate
+        if(!validateEmail(email)){
+            toast.error("Email is invalid");
+            return;
+        }
+
+        if(password.trim() === ""){
+            toast.error("Password is required");
+            return;
+        }
+
+        //Call API
+        const form = new FormData();
+        form.append("email", email);
+        form.append("password", password);
+        form.append("username", username);
+        form.append("role", role);
+        form.append("userImage", image);
+        
+        let res = await axios.post('http://localhost:8081/api/v1/participant', form);
+        console.log(res.data);
+        if(res.data && res.data.EC == 0){
+            toast.success(res.data.EM);
+            handleClose();
+        }
+        
+        if(res.data && res.data.EC != 0){
+            toast.error(res.data.EM);
+        }
+    }
 
     return (
         <>
@@ -126,7 +176,7 @@ const ModalCreateUser = (props) => {
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-                    <Button variant="primary" onClick={handleClose}>
+                    <Button variant="primary" onClick={(event)=>{handleSubmitCreateUser(event)}}>
                         Save
                     </Button>
                 </Modal.Footer>

@@ -2,6 +2,7 @@ import SideBar from "./SideBar";
 import { useState } from "react";
 import "./Admin.scss";
 import { Outlet } from "react-router-dom";
+import { ToastContainer, Slide } from "react-toastify";
 
 import { TbLayoutSidebarLeftCollapseFilled } from "react-icons/tb";
 import { TbLayoutSidebarRightCollapseFilled } from "react-icons/tb";
@@ -17,7 +18,7 @@ const Admin = (props) => {
     return (
         <div className="admin-container">
             <div className="admin-sidebar">
-                <SideBar collapsed={collapsed}/>
+                <SideBar collapsed={collapsed} />
             </div>
             <div className="admin-content">
                 <div className="admin-header">
@@ -30,9 +31,22 @@ const Admin = (props) => {
                     </div>
                 </div>
                 <div className="admin-main">
-                    <Outlet/>
+                    <Outlet />
                 </div>
             </div>
+            <ToastContainer
+                position="top-right"
+                autoClose={2000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick={false}
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="colored"
+                transition={Slide}
+            />
         </div>
     );
 };
