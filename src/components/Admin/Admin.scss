@@ -1,4 +1,14 @@
 .admin-container{
     display: flex;
-    
+    .admin-content{
+        width: 100%;
+        .admin-header{
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+            .sidebar-collaps{
+                cursor: pointer;
+                width: 20px;
+            }
+        }
+    }
 }

@@ -1,0 +1,25 @@
+.sidebar-container {
+    display: flex;
+    .sidebar-content {
+        height: 100vh;
+        border-right: 0.5px solid rgba(0, 0, 0, 0.199);
+        .sidebar-logo {
+            font-weight: 700;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 60px;
+            background-color: #f8f9fa;
+            width: 100%;
+            border-bottom: 1px solid #e9ecef;
+            overflow: hidden;
+            transition: width 0.2s ease, opacity 0.7s ease;
+            white-space: nowrap;
+
+            &.collapsed {
+                width: 100%;
+                opacity: 0.5;
+            }
+        }
+    }
+}
