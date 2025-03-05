@@ -4,6 +4,7 @@ import "./ManageUser.scss";
 import TableUser from "./TableUser";
 import { getAllUsers } from "../../../services/apiService";
 import ModalUpdateUser from "./ModalUpdateUser";
+import ModalViewUser from "./ModalViewUser";
 
 import { FaPlus } from "react-icons/fa6";
 
@@ -12,7 +13,13 @@ const ManageUser = (props) => {
 
     const [showModalUpdateUser, setShowModalUpdateUser] = useState(false);
 
+    const [showModalViewUser, setShowModalViewUser] = useState(false);
+
     const [dataUpdate, setDataUpdate] = useState({});
+
+    const resetUpdateData = () => {
+        setDataUpdate({});
+    }
 
     const handleShow = () => setShowModalCreateUser(true);
 
@@ -36,6 +43,11 @@ const ManageUser = (props) => {
         setDataUpdate(user);
     }
 
+    const handleClickBtnView = (user) => {
+        setShowModalViewUser(true);
+        setDataUpdate(user);
+    }
+
     return (
         <>
             <div className="manage-user-container">
@@ -45,10 +57,11 @@ const ManageUser = (props) => {
                         <button className="btn btn-primary btn-md" onClick={handleShow}><FaPlus /> Add new users</button>
                     </div>
                     <div className="table-user-container">
-                       <TableUser listUsers={listUsers} handleClickBtnUpdate={handleClickBtnUpdate}/>
+                       <TableUser listUsers={listUsers} handleClickBtnUpdate={handleClickBtnUpdate} handleClickBtnView={handleClickBtnView}/>
                     </div>
                     <ModalCreateUser show={showModalCreateUser} setShow={setShowModalCreateUser} fetchListUsers={fetchListUsers}/>
-                    <ModalUpdateUser show={showModalUpdateUser} setShow={setShowModalUpdateUser} dataUpdate={dataUpdate}/>
+                    <ModalUpdateUser show={showModalUpdateUser} setShow={setShowModalUpdateUser} fetchListUsers={fetchListUsers} dataUpdate={dataUpdate} resetUpdateData={resetUpdateData}/>
+                    <ModalViewUser show={showModalViewUser} setShow={setShowModalViewUser} dataUpdate={dataUpdate} resetUpdateData={resetUpdateData}/>
                 </div>
             </div>
         </>
