@@ -8,7 +8,7 @@ import { FcPlus } from "react-icons/fc";
 
 const ModalCreateUser = (props) => {
     
-    const {show, setShow} = props;
+    const {show, setShow, curentPage} = props;
 
     const handleClose = () => {
         setShow(false);
@@ -64,7 +64,7 @@ const ModalCreateUser = (props) => {
         if(data && data.EC === 0){
             toast.success(data.EM);
             handleClose();
-            await props.fetchListUsers();
+            await props.fetchListUsers(1);
         }
 
         if(data && data.EC !== 0){

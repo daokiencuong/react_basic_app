@@ -1,0 +1,51 @@
+.login-container{
+    .header{
+        width: fit-content;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        gap: 7px;
+    }
+
+    .content{
+        width: fit-content;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-items: center;
+        .title{
+            font-size: 35px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .welcome{
+            font-size: 18px;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        .form-group{
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            margin-bottom: 10px;
+
+            label{
+                padding-top: 15px;
+            }
+            input{
+                width: 350px;
+                padding: 5px 10px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+            }
+             
+        }
+        .btn{
+            margin-top: 20px;
+            padding: 8px 55px;
+        }
+        .back-home{
+            cursor: pointer;
+        }
+    }
+}

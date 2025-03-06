@@ -5,7 +5,7 @@ import { deleteUser } from '../../../services/apiService';
 import { toast } from "react-toastify";
 
 const ModalDeleteUser = (props) => {
-    const {show, setShow, dataDelete, fetchListUsers} = props;
+    const {show, setShow, dataDelete, fetchListUsers, currentPage} = props;
 
     const handleClose = () => setShow(false);
 
@@ -13,7 +13,7 @@ const ModalDeleteUser = (props) => {
         let response = await deleteUser(dataDelete.id);
         if(response && response.EC === 0) {
             toast.success(response.EM);
-            fetchListUsers();
+            fetchListUsers(currentPage);
             handleClose();
         } else {
             toast.error(response && response.EM? response.EM : "Delete failed");

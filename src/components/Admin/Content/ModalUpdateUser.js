@@ -8,7 +8,7 @@ import _ from "lodash";
 import { FcPlus } from "react-icons/fc";
 
 const ModalUpdateUser = (props) => {
-    const { show, setShow, dataUpdate, resetUpdateData } = props;
+    const { show, setShow, dataUpdate, resetUpdateData, currentPage} = props;
 
     const handleClose = () => {
         setShow(false);
@@ -69,7 +69,7 @@ const ModalUpdateUser = (props) => {
         if (data && data.EC === 0) {
             toast.success(data.EM);
             handleClose();
-            await props.fetchListUsers();
+            await props.fetchListUsers(currentPage);
         }
 
         if (data && data.EC !== 0) {
