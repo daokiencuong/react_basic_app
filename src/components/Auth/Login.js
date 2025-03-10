@@ -4,11 +4,16 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { postLogin } from "../../services/apiService";
 import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { doLogin } from "../../redux/action/userAction";
+import { PiSpinnerBallDuotone } from "react-icons/pi";
 
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const [isLoading, setLoading] = useState(false);
 
     const validateEmail = (email) => {
         return String(email)
@@ -24,12 +29,14 @@ const Login = () => {
             toast.error("Email is invalid");
             return;
         }
-
+        setLoading(true);
         //submit api
         let data = await postLogin(email, password);
         if (data && +data.EC === 0) {
+            dispatch(doLogin(data));
             toast.success(data.EM);
-            navigate('../');
+            setLoading(false);
+            navigate("../");
         }
 
         if (data && +data.EC !== 0) {
@@ -82,8 +89,11 @@ const Login = () => {
                         onClick={() => {
                             handleLogin();
                         }}
+                        disabled={isLoading}
                     >
-                        Login
+                        {isLoading? <PiSpinnerBallDuotone className="loaderIcon"/>: ''}
+                        
+                        <span>Login</span>
                     </button>
                 </div>
                 <div

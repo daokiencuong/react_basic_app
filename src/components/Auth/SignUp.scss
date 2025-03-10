@@ -1,4 +1,4 @@
-.login-container{
+.signUp-container{
     .header{
         width: fit-content;
         padding: 10px;
@@ -37,6 +37,20 @@
                 padding: 5px 10px;
                 border: 1px solid #ccc;
                 border-radius: 5px;
+            }
+
+            .input-password{
+                padding-right: 40px;
+            }
+
+            .password-toggle{
+                position: relative ;
+            }
+
+            .seePassBtn{
+                position: absolute;
+                top: 6px;
+                right: 15px;
             }
              
         }
