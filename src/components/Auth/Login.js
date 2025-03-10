@@ -41,6 +41,7 @@ const Login = () => {
 
         if (data && +data.EC !== 0) {
             toast.error(data.EM);
+            setLoading(false);
         }
     };
 
